@@ -1,0 +1,7 @@
+#root div {
+  border: 1.5px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+}
