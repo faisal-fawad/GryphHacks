@@ -1,7 +1,7 @@
 :root {
   font-family: Inter, system-ui;
-  color: #ffffff;
-  background-color: #213547;
+  color: black;
+  background-color: white;
 }
 
 body {
@@ -9,8 +9,8 @@ body {
   padding: 0;
 }
 
-input:focus, button:focus {
-  outline: none;
+input:focus, button:focus, .leaflet-marker-icon:focus {
+  outline: none !important;
 }
 
 /* Map customization */
@@ -36,6 +36,10 @@ input:focus, button:focus {
   line-height: 42.5px !important;
   font-size: 30px !important;
   font-weight: 500 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  font-family: Inter, system-ui !important;
 }
 
 @media (prefers-color-scheme: light) {

@@ -1,13 +1,14 @@
 .nav {
   position: fixed;
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   margin: 10px 10px 0 116px;
   z-index: 2;
   height: 45px;
   width: calc(100% - 10px - 116px);
 }
 
+/* Start of filter menu */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -56,24 +57,133 @@
 .options li {
   color: black;
   opacity: 0;
-  transition: opacity .25s ease;
+  transition: opacity .25s ease, visibility 0s .25s;
   padding: 2.5px 10%;
   text-align: right;
   line-height: 35px;
+  visibility: hidden;
+  position: relative;
 }
 
-.options hr {
+.active .options li {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .25s ease .75s, visibility 0s .75s;
+}
+
+.options .headers::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  width: 25%;
+  height: 2px;
+  background: black;
+}
+
+.options .headers::after {
+  content: "";
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  width: 25%;
+  height: 2px;
+  background: black;
+}
+
+.options .headers {
+  text-align: center !important;
+  font-weight: 700;
+}
+
+.options .headers div {
   border: 1px solid black;
+  flex-grow: 1;
 }
 
 .options li:first-child {
   margin-top: 40px;
 }
+/* End of filter menu */
 
-.active .options li {
-  opacity: 1;
-  transition: opacity .25s ease .75s;
+/* Info and legend */
+.infoBtn {
+  position: fixed;
+  z-index: 3;
+  height: 45px;
+  width: 45px;
+  border: none;
+  border-radius: 50%;
+  margin: 10px 0 0 118px;
+  transform: scale(1);
+  background: white;
+  transition: transform 1s ease;
 }
+
+.infoBtn:hover {
+  background: rgb(230, 230, 230);
+  cursor: pointer;
+}
+
+.infoBtn img {
+  width: 25px;
+  height: 25px;
+}
+
+.info {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  z-index: 3;
+  height: 100vh;
+  width: 100%;
+  background: transparent;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .5s ease, visibility 0s ease .5s;
+}
+
+.infoActive {
+  transition: opacity .5s ease, visibility 0s ease 0s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.infoContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  height: 150px;
+  background: white;
+  padding: 20px;
+  border-radius: calc(45px / 2);
+}
+
+.infoContainer ul {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.infoContainer ul li div {
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin-right: 5px;
+  border-radius: 5px;
+  transform: translateY(5px);
+}
+
+.infoContainer p {
+  margin: 0;
+}
+
 
 /* Start of button animation */
 .ham {
