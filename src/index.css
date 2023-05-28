@@ -9,6 +9,10 @@ body {
   padding: 0;
 }
 
+input:focus, button:focus {
+  outline: none;
+}
+
 /* Map customization */
 .leaflet-container {
   width: 100%;

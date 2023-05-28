@@ -1,13 +1,10 @@
 import styles from '../css/Slider.module.css'
-import { useState } from 'react'
 
-function Slider(props) {
-  const [checked, setChecked] = useState(true)
-
+function Slider({change, name}) {
   return (
     <label className={styles.switch}>
-      <input data-type={props.type} type="checkbox" defaultChecked={checked} onChange={() => setChecked(!checked)}/>
-      <span class={styles.slider}></span>
+      <input type="checkbox" defaultChecked={true} onChange={() => change(name)}/>
+      <span className={styles.slider}></span>
     </label>
   )
 }

@@ -6,49 +6,106 @@ import json from '../json/data.json'
 
 function App() {
   const [active, setActive] = useState(false)
-  const [data, setData] = useState([])
-  const [filters, setFilters] = useState([])
+  const [filters, setFilters] = useState({
+    Solar: true,
+    Wind: true,
+    Peak: true,
+    Fair: true
+  })
 
-  /* On mount */
-  useEffect(() => {
-    setFilters(fetchFilters())
-    setData(fetchData())
-  }, []);
 
   function fetchData() {
     let markers = []
+    let bounds = {}
+  
     /* Filters of data */
+    if (filters["Solar"]) {
+      bounds["Solar"] = {}
+      if (filters["Fair"]) {
+        bounds["Solar"]["Fair"] = [[57, 67], [87, 97]]
+      }
+      if (filters["Peak"]) {
+        bounds["Solar"]["Peak"] = [[67, 87]]
+      }
+    }
+    if (filters["Wind"]) {
+      bounds["Wind"] = {}
+      if (filters["Fair"]) {
+        bounds["Wind"]["Fair"] = [[12, 15], [18, 22]]
+      }
+      if (filters["Peak"]) {
+        bounds["Wind"]["Peak"] = [[15, 18]]
+      }
+    }
+    console.log(bounds)
 
     /* Creating array of react elements */
+    let id = 0
     for (const item in json) {
-      let minutes = Math.floor(json[item]["sun_time"] / 60)
-      let hours = Math.floor(json[item]["sun_time"] / 3600)
-      markers.push(
-        <Marker position={[json[item]["latitude"], json[item]["longitude"]]}>
-          <Popup>
-            <strong>{item}:</strong> <br/>
-            Temperature: {Math.round(json[item]["temp"] * 10) / 10} <br/>
-            Sun Time: {hours} hours, {minutes - (hours * 60)} mins <br/>
-            Wind Speed: {Math.round(json[item]["windspeed"] * 10) / 10} <br/>
-            Solar: <br/>
-            Wind: <br/>
-          </Popup>
-        </Marker>
-      )
+      let results = []
+      let valid = false
+      let x = 0
+      /* Iteration for filtering */
+      if (Object.keys(bounds).length == 0) {
+        valid = true
+      }
+      for (const type in bounds) {
+        if (Object.keys(bounds[type]).length == 0) {
+          valid = true
+        }
+        for (const condition in bounds[type]) {
+          for (let i = 0; i < bounds[type][condition].length; i++) {
+            if (bounds[type][condition][i][0] < json[item][(type == "Solar" ? "temp" : "windspeed")] && json[item][(type == "Solar" ? "temp" : "windspeed")] < bounds[type][condition][i][1]) {
+              results.push(<span key={x}>{type} Rating: {condition}<br/></span>)
+              x += 1
+              valid = true
+            }
+          }
+        }
+      }
+      /* Filter iteration complete */
+
+      if (valid) {
+        markers.push(
+          <Marker key={id} position={[json[item]["latitude"], json[item]["longitude"]]}>
+            <Popup>
+              <strong>{item}:</strong><br/>
+              <span>Temperature: {Math.round(json[item]["temp"] * 10) / 10} °F<br/></span>
+              <span>Wind Speed: {Math.round(json[item]["windspeed"] * 10) / 10} m/s<br/></span>
+              {results}
+            </Popup>
+          </Marker>
+        )
+        id += 1
+      }
     }
     return markers
   }
 
-  function fetchFilters() {
-    let filters = {}
-    let inputs = document.getElementsByTagName("input");
-    for (var i = 0; i < inputs.length; i++) {
-      if (inputs[i].type == "checkbox") {
-        filters[inputs[i].getAttribute("data-type")] = inputs[i].checked
-      }  
+  /* Easily creates the sliders */
+  function setSliders() {
+    let names = ["HR", "Solar", "Wind", "HR", "Peak", "Fair"]
+    let sliders = []
+    for (let i = 0; i < names.length; i++) {
+      if (names[i] === "HR") {
+        sliders.push(
+          <li key={i}><hr></hr></li>
+        )
+      }
+      else {
+        sliders.push(
+          <li key={i}>{names[i]}<Slider name={names[i]} change={changeFilters}/></li>
+        )
+      }
     }
-    console.log(filters)
-    return filters
+    return sliders
+  }
+
+  /* Changes the active filters */
+  function changeFilters(name) {
+    let temp = filters
+    temp[name] = !temp[name]
+    setFilters(temp)
   }
 
   return (
@@ -66,13 +123,7 @@ function App() {
           <span>Filter</span>
         </button>
         <ul className={styles.options}>
-          <li><hr></hr></li>
-          <li>Solar<Slider type="solar"/></li>
-          <li>Wind<Slider type="wind"/></li>
-          <li><hr></hr></li>
-          <li>Peak<Slider type="peak"/></li>
-          <li>Fair<Slider type="fair"/></li>
-          <li>Poor<Slider type="poor"/></li>
+          {setSliders()}
         </ul>
       </nav>
       <MapContainer center={[43.5448, -80.2482]} zoom={10} minZoom={3} maxZoom={18}>
@@ -80,7 +131,7 @@ function App() {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {data}
+        {fetchData()}
       </MapContainer> 
     </>
   )
