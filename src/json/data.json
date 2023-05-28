@@ -1,0 +1,98 @@
+{
+    "Guelph, ON, Canada": {
+        "address": "Guelph, Ontario",
+        "latitude": 43.5446,
+        "longitude": -80.2479,
+        "temp": 46.400000000000006,
+        "windspeed": 12.875000000000002,
+        "sun_time": 43847.0
+    },
+    "New York, NY, United States": {
+        "address": "New York City, New York",
+        "latitude": 40.7146,
+        "longitude": -74.0071,
+        "temp": 56.958333333333336,
+        "windspeed": 12.883333333333333,
+        "sun_time": 43811.333333333336
+    },
+    "Sydney, NSW 2000, Australia": {
+        "address": "Sydney, Australia",
+        "latitude": -33.8696,
+        "longitude": 151.207,
+        "temp": 65.28333333333333,
+        "windspeed": 15.358333333333333,
+        "sun_time": 43657.583333333336
+    },
+    "London, England, United Kingdom": {
+        "address": "London, United Kingdom",
+        "latitude": 51.5064,
+        "longitude": -0.12721,
+        "temp": 53.94166666666667,
+        "windspeed": 12.658333333333333,
+        "sun_time": 43953.5
+    },
+    "Paris, \u00cele-de-France, France": {
+        "address": "Paris, France",
+        "latitude": 48.8572,
+        "longitude": 2.34141,
+        "temp": 55.883333333333326,
+        "windspeed": 11.116666666666667,
+        "sun_time": 43907.25
+    },
+    "\u0130stanbul, T\u00fcrkiye": {
+        "address": "Istanbul, Turkey",
+        "latitude": 41.062,
+        "longitude": 28.9888,
+        "temp": 62.43333333333334,
+        "windspeed": 14.391666666666667,
+        "sun_time": 43796.416666666664
+    },
+    "Barcelona, Catalunya, Espanya": {
+        "address": "Barcelona, Spain",
+        "latitude": 41.388,
+        "longitude": 2.17001,
+        "temp": 62.12499999999999,
+        "windspeed": 12.475000000000001,
+        "sun_time": 43800.25
+    },
+    "Amsterdam, Noord-Holland, Nederland": {
+        "address": "Amsterdam, Netherlands",
+        "latitude": 52.3699,
+        "longitude": 4.90788,
+        "temp": 51.67500000000001,
+        "windspeed": 14.674999999999999,
+        "sun_time": 43980.0
+    },
+    "Roma, Lazio, Italia": {
+        "address": "Rome, Italy",
+        "latitude": 41.9032,
+        "longitude": 12.4957,
+        "temp": 63.03333333333334,
+        "windspeed": 11.241666666666667,
+        "sun_time": 43806.0
+    },
+    "Tokyo, Japan": {
+        "address": "Tokyo, Japan",
+        "latitude": 35.6841,
+        "longitude": 139.809,
+        "temp": 62.86666666666665,
+        "windspeed": 10.433333333333332,
+        "sun_time": 43777.583333333336
+    },
+    "\u0e01\u0e23\u0e38\u0e07\u0e40\u0e17\u0e1e\u0e21\u0e2b\u0e32\u0e19\u0e04\u0e23, \u0e1b\u0e23\u0e30\u0e40\u0e17\u0e28\u0e44\u0e17\u0e22": {
+        "address": "Bangkok, Thailand",
+        "latitude": 13.7534,
+        "longitude": 100.505,
+        "temp": 83.74166666666667,
+        "windspeed": 11.275,
+        "sun_time": 43644.5
+    },
+    "Dubai Ave, Kiambu, Kenya": {
+        "address": "Dubai, UAE",
+        "latitude": -1.16123,
+        "longitude": 36.9448,
+        "temp": 67.7,
+        "windspeed": 16.175,
+        "sun_time": 43616.666666666664
+    }
+}
