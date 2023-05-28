@@ -1,2 +1,2 @@
 # GryphHacks
-GryphHacks 2023 Hackathon Project
+This app displays a map which provides the best locations for renewable energy sources.
