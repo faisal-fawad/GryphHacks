@@ -1,5 +1,5 @@
 # EcoMap | [Devpost](https://devpost.com/software/renewable-planning) | [Website](https://faisal-fawad.github.io/GryphHacks/)
-This app displays a map which provides the best locations for renewable energy sources.
+This app displays a map which provides the best locations for future planning of renewable energy sources.
 
 A few screenshots of the app are provided below:
 ![image](https://github.com/faisal-fawad/GryphHacks/assets/76597599/71274be0-7896-4c9a-a3b8-14894284b620)
